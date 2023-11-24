@@ -7,6 +7,7 @@ let clickCount = 0;
 let countdown = 31;
 let countdownInterval = null;
 let countDown = document.getElementById('countDown');
+let reStart = document.getElementById('reStart');
 
 // ランダムなインデックスを取得
 function getRandomIndex() {
@@ -56,11 +57,12 @@ document.body.addEventListener("click", function startCountdown() {
     let clickCountdown = 3;
     countDown.textContent = clickCountdown;
     let clickCountdownInterval = setInterval(function() {
-        if (clickCountdown > 0) {
+        if (clickCountdown > 1) {
             clickCountdown--;
             countDown.textContent = clickCountdown;
-        } if (clickCountdown === 1) {
+        } else if (clickCountdown === 1) {
             countDown.textContent = "start!";
+            clickCountdown--;
         } else {
             clearInterval(clickCountdownInterval);
             // 3秒のカウントダウンが0になったらbox内のidをクリックできるようにする
@@ -77,7 +79,8 @@ document.body.addEventListener("click", function startCountdown() {
                     countDown.textContent = countdown;
                 } else {
                     clearInterval(countdownInterval);
-                    countDown.textContent = clickCount;
+                    countDown.textContent = "score : " + clickCount;
+                    reStart.classList.remove('hidden');
                     // 30秒間のカウントダウンが0になったらbox内のidをクリックできないようにする
                     ids.forEach(function(id) {
                         let element = document.getElementById(id);
@@ -91,4 +94,9 @@ document.body.addEventListener("click", function startCountdown() {
     }, 1000);
     // 一度だけ実行するためにイベントリスナーを削除
     document.body.removeEventListener("click", startCountdown);
+});
+
+//画面のリロード
+reStart.addEventListener("click", function() {
+    location.reload();
 });
