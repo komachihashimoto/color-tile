@@ -3,7 +3,7 @@
 // IDの配列を作成
 let ids = ["Tile1", "Tile2", "Tile3", "Tile4", "Tile5", "Tile6", "Tile7", "Tile8", "Tile9"];
 let currentId = null;
-let lastId = null;
+let lastId = ids[Math.floor(Math.random() * ids.length)]; // 初回のlastIdをランダムに設定
 let clickCount = 0;
 let countdown = 31;
 let countdownInterval = null;
@@ -31,7 +31,7 @@ function changeRandomBackground() {
     if (lastId) {
         let lastElement = document.getElementById(lastId);
         if (lastElement) {
-            lastElement.style.backgroundColor = "#252525";
+            lastElement.style.backgroundColor = "#fff";
         }
     }
     let availableIds = ids.filter(id => id !== lastId); // 前回のIDを除く
@@ -40,7 +40,7 @@ function changeRandomBackground() {
     lastId = currentId; // 現在のIDをlastIdに保存
     let element = document.getElementById(currentId);
     if (element) {
-        element.style.backgroundColor = "#fff";
+        element.style.backgroundColor = "#353535";
     }
 }
 
@@ -53,7 +53,7 @@ ids.forEach(function(id) {
     if (element) {
         element.style.pointerEvents = "none"; // 初期化時にクリックできないようにする
         element.addEventListener("click", function() {
-            if (id === currentId && countdown > 0) {
+            if (element.style.backgroundColor === "rgb(255, 255, 255)" && countdown > 0) { // 背景色が#fffの要素がクリックされた時
                 changeRandomBackground();
                 clickCount += 1;
             }
