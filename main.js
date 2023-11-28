@@ -3,6 +3,7 @@
 // IDの配列を作成
 let ids = ["Tile1", "Tile2", "Tile3", "Tile4", "Tile5", "Tile6", "Tile7", "Tile8", "Tile9"];
 let currentId = null;
+let lastId = null;
 let clickCount = 0;
 let countdown = 31;
 let countdownInterval = null;
@@ -27,8 +28,10 @@ function resetBackgrounds() {
 // ランダムな要素の背景色を変更
 function changeRandomBackground() {
     resetBackgrounds();
-    let randomIndex = getRandomIndex();
-    currentId = ids[randomIndex];
+    let availableIds = ids.filter(id => id !== lastId); // 前回のIDを除く
+    let randomIndex = Math.floor(Math.random() * availableIds.length); // 新しいIDリストからランダムなインデックスを取得
+    currentId = availableIds[randomIndex]; // 新しいIDリストからランダムなIDを取得
+    lastId = currentId; // 現在のIDをlastIdに保存
     let element = document.getElementById(currentId);
     if (element) {
         element.style.backgroundColor = "#fff";
