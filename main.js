@@ -28,6 +28,12 @@ function resetBackgrounds() {
 // ランダムな要素の背景色を変更
 function changeRandomBackground() {
     resetBackgrounds();
+    if (lastId) {
+        let lastElement = document.getElementById(lastId);
+        if (lastElement) {
+            lastElement.style.backgroundColor = "#252525";
+        }
+    }
     let availableIds = ids.filter(id => id !== lastId); // 前回のIDを除く
     let randomIndex = Math.floor(Math.random() * availableIds.length); // 新しいIDリストからランダムなインデックスを取得
     currentId = availableIds[randomIndex]; // 新しいIDリストからランダムなIDを取得
