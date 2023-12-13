@@ -47,7 +47,7 @@ function changeRandomBackground() {
 // 初期化
 changeRandomBackground();
 
-// クリックイベントを設定
+// クリックイベントの設定
 ids.forEach(function(id) {
     let element = document.getElementById(id);
     if (element) {
