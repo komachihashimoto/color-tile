@@ -10,7 +10,7 @@ let countdownInterval = null;
 let countDown = document.getElementById('countDown');
 let reStart = document.getElementById('reStart');
 
-// ランダムなインデックスを取得
+// ランダムなインデックスの取得
 function getRandomIndex() {
     return Math.floor(Math.random() * ids.length);
 }
