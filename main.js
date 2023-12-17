@@ -15,7 +15,7 @@ function getRandomIndex() {
     return Math.floor(Math.random() * ids.length);
 }
 
-// 背景色をリセット
+// 背景色のリセット
 function resetBackgrounds() {
     ids.forEach(function(id) {
         let element = document.getElementById(id);
