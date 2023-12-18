@@ -101,7 +101,7 @@ document.body.addEventListener("click", function startCountdown() {
             }, 1000);
         }
     }, 1000);
-    // 一度だけ実行するためにイベントリスナーを削除
+    // 一度だけ実行するためイベントリスナーを削除
     document.body.removeEventListener("click", startCountdown);
 });
 
