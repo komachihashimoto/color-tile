@@ -45,7 +45,7 @@ body {
   width: 60vh;
   background-color: #191919;
   border: #ffffff 5px outset;
-  border-radius: 11px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
